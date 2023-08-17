@@ -142,13 +142,15 @@ export default {
 
     this.cart = this.$store.state.cart;
 
-    // if (this.cartTotalLength > 0) {
-    //     this.stripe = Stripe('pk_test_51H1HiuKBJV2qfWbD2gQe6aqanfw6Eyul5PO2KeOuSRlUMuaV4TxEtaQyzr9DbLITSZweL7XjK3p74swcGYrE2qEX00Hz7GmhMI')
-    //     const elements = this.stripe.elements();
-    //     this.card = elements.create('card', { hidePostalCode: true })
+    if (this.cartTotalLength > 0) {
+      this.stripe = Stripe(
+        "pk_test_51NfeSzCKTN7zMhcd4ONldw844cNl0rlKiYOSIV9S3EnxH4kpUgvEbMyQaVrQFSS6TXNWtthRLoxmLimz0uh2EqA100PFd0HYU7"
+      );
+      const elements = this.stripe.elements();
+      this.card = elements.create("card", { hidePostalCode: true });
 
-    //     this.card.mount('#card-element')
-    // }
+      this.card.mount("#card-element");
+    }
   },
   methods: {
     getItemTotal(item) {
